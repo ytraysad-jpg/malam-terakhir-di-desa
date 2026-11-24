@@ -90,7 +90,7 @@ pengganti:["PENJAGA DESA",["Kau melangkah ke lingkaran altar dan sosok itu lenya
 lingkaran:["LINGKARAN TERPUTUS",["Kau mengangkat foto itu. Sosok tanpa wajah terdiam; perlahan wajahnya terbentuk: Bapak, yang hilang sejak kau kecil.","“Akulah yang menanam kutukan itu, agar kalian tak mati kelaparan.”","Keris itu retak sendiri. Fajar menyingkap seluruh desa, dan Ibu menggenggam tanganmu.","Untuk pertama kalinya, tak ada lagi yang lenyap."]]};
 const EN=Object.keys(ED).length;
 function reset(){build();paintAll();Q={};TO=null;px=40;py=208;hid=0;stam=100;san=100;fear=0;inv={};got={};tired=0;buf='';T=0;gateCd=0;pr=0;walk=0;
- E=[mkE('K','Kuntilanak',.5,1.15,75,1,[[11,9],[11,7],[8,9],[14,10],[11,11]]),mkE('P','Pocong',.32,.95,65,0,[[19,10],[19,15],[24,13],[19,5],[16,5],[22,5]]),mkE('G','Genderuwo',.45,1.05,62,0,[[30,11],[36,13],[30,6],[26,14]])];
+ E=[mkE('K','Kuntilanak',.5,1,75,1,[[11,9],[11,7],[8,9],[14,10],[11,11]]),mkE('P','Pocong',.3,.8,65,0,[[19,10],[19,15],[24,13],[19,5],[16,5],[22,5]]),mkE('G','Genderuwo',.45,.95,62,0,[[30,11],[36,13],[30,6],[26,14]])];
  SH={vis:0,t:1800,x:0,y:0}}
 function blocked(x,y,hw=4,hh=3){for(const[a,b]of[[-hw,-hh],[hw,-hh],[-hw,hh],[hw,hh]])if(SOL.has(tile((x+a)/16|0,(y+b)/16|0)))return 1;return 0}
 function los(a,b,c,d){const n=Math.hypot(c-a,d-b)/6|0;for(let i=1;i<n;i++){const t=i/n;if(SOL.has(tile((a+(c-a)*t)/16|0,(b+(d-b)*t)/16|0)))return 0}return 1}
@@ -139,7 +139,7 @@ function eUpd(e){
  if(e.mode==1){if(hid&&d>12){e.mode=2;e.tm=0}else{if(!(see||hear)){if(++e.tm>220){e.mode=2;e.tm=0}}tx=(see||hear)?px:e.lx;ty=(see||hear)?py:e.ly;sp=e.ch}}
  if(e.mode==2){tx=e.lx;ty=e.ly;sp=e.sp*1.2;if(Math.hypot(tx-e.x,ty-e.y)<6){sp=0;if(++e.tm>180)e.mode=0}}
  if(e.mode==0){const w=e.wp[e.wi];tx=w[0];ty=w[1];sp=e.sp;if(Math.hypot(tx-e.x,ty-e.y)<6)e.wi=(e.wi+1)%e.wp.length}
- if(e.k=='P')sp*=Math.max(.05,Math.sin(T/10)*1.8);
+ if(e.k=='P')sp*=Math.max(.15,Math.sin(T/12)*1.2);
  if(sp){const a=Math.atan2(ty-e.y,tx-e.x),nx=e.x+Math.cos(a)*sp,ny=e.y+Math.sin(a)*sp;let mv=0;
   if(e.gh||!blocked(nx,e.y,5,4)){e.x=nx;mv=1}if(e.gh||!blocked(e.x,ny,5,4)){e.y=ny;mv=1}
   e.stuck=mv?0:e.stuck+1;if(e.stuck>80){e.stuck=0;if(e.mode==0)e.wi=(e.wi+1)%e.wp.length;else if(e.mode==2)e.mode=0}}
@@ -184,7 +184,7 @@ function panel(h){X.fillStyle='rgba(8,6,12,.93)';X.fillRect(8,VH-h-8,VW-16,h);X.
 function drawE(e,cx,cy){const w=e.k=='G'?16:12;let x=Math.round(e.x-w/2-cx),y=Math.round(e.y-w+2-cy);
  X.fillStyle='rgba(0,0,0,.45)';X.fillRect(x+1,Math.round(e.y-1-cy),w-2,3);
  if(e.k=='K'){y-=4+Math.round(Math.sin(T/14)*2);X.globalAlpha=.88}
- if(e.k=='P')y-=Math.max(0,Math.round(Math.sin(T/10)*4));
+ if(e.k=='P')y-=Math.max(0,Math.round(Math.sin(T/12)*4));
  X.drawImage(SP[e.k],x,y,w,w);X.globalAlpha=1;e.sx=x;e.sy=y}
 const GL={well:['kunci','#ffd84a'],kemenyan:['kemenyan','#c8b890'],kembang:['kembang','#e86aa0'],surat:['surat','#fff']};
 function draw(){TXC.clearRect(0,0,TCV.width,TCV.height);X.fillStyle='#000';X.fillRect(0,0,VW,VH);X.textAlign='left';
