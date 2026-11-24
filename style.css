@@ -1,0 +1,20 @@
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:dark}
+html,body{margin:0;height:100%;background:#05060a;overflow:hidden;font-family:monospace}
+body{display:flex;align-items:center;justify-content:center}
+#w{position:relative;width:min(100vw,calc(100vh*16/9));aspect-ratio:16/9}
+canvas{width:100%;height:100%;image-rendering:pixelated;display:block}
+#v{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.75))}
+#tx{position:absolute;inset:0;image-rendering:auto;pointer-events:none}
+html,body{touch-action:none;user-select:none;-webkit-user-select:none}
+#w{container-type:inline-size}
+#t{position:absolute;inset:0;pointer-events:none;display:none}
+.touch #t{display:block}
+.b{position:absolute;pointer-events:auto;width:10%;aspect-ratio:1;border-radius:50%;background:rgba(255,255,255,.13);border:2px solid rgba(255,255,255,.35);color:#fff;font:4cqw 'VT323',monospace;display:flex;align-items:center;justify-content:center;touch-action:none;box-sizing:border-box}
+.b.big{width:13%;font-size:3.8cqw;background:rgba(200,50,50,.25)}
+#js{position:absolute;left:4%;bottom:8%;width:20%;aspect-ratio:1;border-radius:50%;background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.3);pointer-events:auto;touch-action:none;box-sizing:border-box}
+#jk{position:absolute;left:30%;top:30%;width:40%;height:40%;border-radius:50%;background:rgba(255,255,255,.35);border:2px solid rgba(255,255,255,.6);box-sizing:border-box;pointer-events:none}
+.b.on{background:rgba(255,255,255,.38)}
+#kp{position:absolute;left:58%;top:6%;width:40%;display:none;grid-template-columns:repeat(3,1fr);gap:3%;pointer-events:none}
+#kp .b{position:static;width:100%;aspect-ratio:1.5;border-radius:10px}
+#rot{position:fixed;inset:0;z-index:9;background:#05060a;color:#c9b88a;display:none;align-items:center;justify-content:center;flex-direction:column;text-align:center;font:bold 5vw monospace;padding:8vw;box-sizing:border-box}
+@media (orientation:portrait) and (pointer:coarse){#rot{display:flex}}
